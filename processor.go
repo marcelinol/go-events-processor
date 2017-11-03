@@ -18,8 +18,7 @@ func check(e error) {
 	}
 }
 
-func readFiles() {
-	h := make(map[string]int)
+func LoadCompiledFile(h map[string]int) {
 	finalPath := "./files/conversions"
 	if _, err := os.Stat(finalPath); !os.IsNotExist(err) { // Check if file exists
 		f, err := os.Open(finalPath)
@@ -27,17 +26,29 @@ func readFiles() {
 		ProcessFile(f, h)
 	}
 
-	files, err := ioutil.ReadDir("./tmp")
+	return
+}
+
+func readFiles() {
+	path := "./tmp"
+	files, err := ioutil.ReadDir(path)
 	check(err)
 
+	if len(files) < 1 {
+		return
+	}
+
+	h := make(map[string]int)
+	LoadCompiledFile(h)
+
 	for _, file := range files {
-		path := "./tmp/" + file.Name()
-		file, err := os.Open(path)
+		filePath := path + "/" + file.Name()
+		file, err := os.Open(filePath)
 		check(err)
 		defer file.Close()
 
 		ProcessFile(file, h)
-		err = os.Remove(path)
+		err = os.Remove(filePath)
 		check(err)
 	}
 
