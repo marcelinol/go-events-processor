@@ -20,23 +20,32 @@ func check(e error) {
 
 func readFiles() {
 	h := make(map[string]int)
+	finalPath := "./files/conversions"
+	if _, err := os.Stat(finalPath); !os.IsNotExist(err) { // Check if file exists
+		f, err := os.Open(finalPath)
+		check(err)
+		ProcessFile(f, h)
+	}
+
 	files, err := ioutil.ReadDir("./tmp")
 	check(err)
 
 	for _, file := range files {
-		fmt.Println(file.Name())
-		file, err := os.Open("./tmp/" + file.Name())
+		path := "./tmp/" + file.Name()
+		file, err := os.Open(path)
 		check(err)
-
-		proccessFile(file, h)
 		defer file.Close()
+
+		ProcessFile(file, h)
+		err = os.Remove(path)
+		check(err)
 	}
 
 	WriteToFile(h)
 }
 
 func WriteToFile(hash map[string]int) {
-	f, err := os.Create("./files/conversions" + strconv.Itoa(int(time.Now().UnixNano())))
+	f, err := os.Create("./files/conversions")
 	check(err)
 	defer f.Close()
 
@@ -52,7 +61,7 @@ func WriteToFile(hash map[string]int) {
 	return
 }
 
-func proccessFile(f *os.File, hash map[string]int) {
+func ProcessFile(f *os.File, hash map[string]int) {
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() { // O(n) sendo n o numero de linhas do arquivo
 		fmt.Println(scanner.Text())
@@ -75,13 +84,9 @@ func proccessFile(f *os.File, hash map[string]int) {
 }
 
 func doEvery(d time.Duration, f func()) {
-	count := 0
 	for range time.Tick(d) {
+		fmt.Println("ping")
 		f()
-		count++
-		if count > 0 {
-			return
-		}
 	}
 }
 
@@ -90,6 +95,5 @@ func helloworld() {
 }
 
 func main() {
-	doEvery(2000*time.Millisecond, helloworld)
-	doEvery(5000*time.Millisecond, readFiles)
+	doEvery(7000*time.Millisecond, readFiles)
 }
