@@ -1,0 +1,46 @@
+version: '3'
+services:
+  main_processor:
+    image: marcelinol/go-events-processor:latest
+    volumes:
+      - ./files:/go/src/github.com/marcelinol/go-events-processor/files
+      - ./tmp:/go/src/github.com/marcelinol/go-events-processor/tmp
+    networks:
+      - event_bus
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '1.000'
+          memory: 1024M
+        reservations:
+          cpus: '1.000'
+          memory: 1024M
+
+  api_1:
+    image: marcelinol/go-events-api:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - event_bus
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '0.500'
+          memory: 512M
+        reservations:
+          cpus: '0.500'
+          memory: 512M
+
+networks:
+  event_bus:
+    driver: overlay
