@@ -102,10 +102,6 @@ func doEvery(d time.Duration, f func()) {
 	}
 }
 
-func helloworld() {
-	fmt.Printf("Hello, World!\n")
-}
-
 func main() {
 	doEvery(7000*time.Millisecond, readFiles)
 }
