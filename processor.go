@@ -12,6 +12,8 @@ import (
 	"time"
 )
 
+var finalPath = "./result/conversions"
+
 func check(e error) {
 	if e != nil {
 		panic(e)
@@ -19,7 +21,6 @@ func check(e error) {
 }
 
 func LoadCompiledFile(h map[string]int) {
-	finalPath := "./files/conversions"
 	if _, err := os.Stat(finalPath); !os.IsNotExist(err) { // Check if file exists
 		f, err := os.Open(finalPath)
 		check(err)
@@ -30,7 +31,7 @@ func LoadCompiledFile(h map[string]int) {
 }
 
 func readFiles() {
-	path := "./tmp"
+	path := "./conversions"
 	files, err := ioutil.ReadDir(path)
 	check(err)
 
@@ -56,7 +57,7 @@ func readFiles() {
 }
 
 func WriteToFile(hash map[string]int) {
-	f, err := os.Create("./files/conversions")
+	f, err := os.Create(finalPath)
 	check(err)
 	defer f.Close()
 
