@@ -3,8 +3,8 @@ services:
   main_processor:
     image: marcelinol/go-events-processor:latest
     volumes:
-      - ./files:/go/src/github.com/marcelinol/go-events-processor/files
-      - ./tmp:/go/src/github.com/marcelinol/go-events-processor/tmp
+      - ./conversions:/go/src/github.com/marcelinol/go-events-processor/conversions
+      - ./result:/go/src/github.com/marcelinol/go-events-processor/result
     networks:
       - event_bus
     deploy:
