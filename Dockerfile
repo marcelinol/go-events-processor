@@ -6,3 +6,6 @@ RUN apk add --no-cache git mercurial \
 
 ENTRYPOINT cd /go/src/github.com/marcelinol/go-events-processor \
     && go run processor.go
+
+RUN mkdir /go/src/github.com/marcelinol/go-events-processor/conversions
+RUN mkdir /go/src/github.com/marcelinol/go-events-processor/result
