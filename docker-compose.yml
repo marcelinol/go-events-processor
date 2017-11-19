@@ -23,6 +23,8 @@ services:
 
   api_1:
     image: marcelinol/go-events-api:latest
+    volumes:
+      - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
     ports:
       - "8080:8080"
     networks:
