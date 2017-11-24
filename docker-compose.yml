@@ -1,0 +1,457 @@
+version: '3'
+services:
+  main_processor:
+    image: marcelinol/go-events-processor:latest
+    volumes:
+      - ./conversions:/go/src/github.com/marcelinol/go-events-processor/conversions
+      - ./result:/go/src/github.com/marcelinol/go-events-processor/result
+    networks:
+      - event_bus
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '1.000'
+          memory: 1024M
+        reservations:
+          cpus: '1.000'
+          memory: 1024M
+
+  api_1:
+    image: marcelinol/go-events-api:latest
+    volumes:
+      - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+    ports:
+      - "8080:8080"
+    networks:
+      - event_bus
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '0.250'
+          memory: 256M
+        reservations:
+          cpus: '0.250'
+          memory: 256M
+
+  api_2:
+    image: marcelinol/go-events-api:latest
+    volumes:
+      - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+    ports:
+      - "8081:8080"
+    networks:
+      - event_bus
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '0.250'
+          memory: 256M
+        reservations:
+          cpus: '0.250'
+          memory: 256M
+
+  api_3:
+    image: marcelinol/go-events-api:latest
+    volumes:
+      - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+    ports:
+      - "8082:8080"
+    networks:
+      - event_bus
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '0.250'
+          memory: 256M
+        reservations:
+          cpus: '0.250'
+          memory: 256M
+
+  api_4:
+    image: marcelinol/go-events-api:latest
+    volumes:
+      - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+    ports:
+      - "8083:8080"
+    networks:
+      - event_bus
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '0.250'
+          memory: 256M
+        reservations:
+          cpus: '0.250'
+          memory: 256M
+
+  api_5:
+    image: marcelinol/go-events-api:latest
+    volumes:
+      - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+    ports:
+      - "8084:8080"
+    networks:
+      - event_bus
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '0.250'
+          memory: 256M
+        reservations:
+          cpus: '0.250'
+          memory: 256M
+
+  api_6:
+    image: marcelinol/go-events-api:latest
+    volumes:
+      - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+    ports:
+      - "8085:8080"
+    networks:
+      - event_bus
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '0.250'
+          memory: 256M
+        reservations:
+          cpus: '0.250'
+          memory: 256M
+
+  api_7:
+    image: marcelinol/go-events-api:latest
+    volumes:
+      - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+    ports:
+      - "8086:8080"
+    networks:
+      - event_bus
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '0.250'
+          memory: 256M
+        reservations:
+          cpus: '0.250'
+          memory: 256M
+
+  api_8:
+    image: marcelinol/go-events-api:latest
+    volumes:
+      - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+    ports:
+      - "8087:8080"
+    networks:
+      - event_bus
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '0.250'
+          memory: 256M
+        reservations:
+          cpus: '0.250'
+          memory: 256M
+
+  api_9:
+    image: marcelinol/go-events-api:latest
+    volumes:
+      - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+    ports:
+      - "8088:8080"
+    networks:
+      - event_bus
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '0.250'
+          memory: 256M
+        reservations:
+          cpus: '0.250'
+          memory: 256M
+
+  api_10:
+    image: marcelinol/go-events-api:latest
+    volumes:
+      - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+    ports:
+      - "8089:8080"
+    networks:
+      - event_bus
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '0.250'
+          memory: 256M
+        reservations:
+          cpus: '0.250'
+          memory: 256M
+
+  # api_11:
+  #   image: marcelinol/go-events-api:latest
+  #   volumes:
+  #     - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+  #   ports:
+  #     - "8090:8080"
+  #   networks:
+  #     - event_bus
+  #   deploy:
+  #     restart_policy:
+  #       condition: on-failure
+  #       delay: 5s
+  #       max_attempts: 3
+  #       window: 120s
+  #     resources:
+  #       limits:
+  #         cpus: '0.200'
+  #         memory: 256M
+  #       reservations:
+  #         cpus: '0.200'
+  #         memory: 256M
+  # api_12:
+  #   image: marcelinol/go-events-api:latest
+  #   volumes:
+  #     - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+  #   ports:
+  #     - "8091:8080"
+  #   networks:
+  #     - event_bus
+  #   deploy:
+  #     restart_policy:
+  #       condition: on-failure
+  #       delay: 5s
+  #       max_attempts: 3
+  #       window: 120s
+  #     resources:
+  #       limits:
+  #         cpus: '0.200'
+  #         memory: 256M
+  #       reservations:
+  #         cpus: '0.200'
+  #         memory: 256M
+  # api_13:
+  #   image: marcelinol/go-events-api:latest
+  #   volumes:
+  #     - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+  #   ports:
+  #     - "8092:8080"
+  #   networks:
+  #     - event_bus
+  #   deploy:
+  #     restart_policy:
+  #       condition: on-failure
+  #       delay: 5s
+  #       max_attempts: 3
+  #       window: 120s
+  #     resources:
+  #       limits:
+  #         cpus: '0.200'
+  #         memory: 256M
+  #       reservations:
+  #         cpus: '0.200'
+  #         memory: 256M
+  # api_14:
+  #   image: marcelinol/go-events-api:latest
+  #   volumes:
+  #     - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+  #   ports:
+  #     - "8093:8080"
+  #   networks:
+  #     - event_bus
+  #   deploy:
+  #     restart_policy:
+  #       condition: on-failure
+  #       delay: 5s
+  #       max_attempts: 3
+  #       window: 120s
+  #     resources:
+  #       limits:
+  #         cpus: '0.200'
+  #         memory: 256M
+  #       reservations:
+  #         cpus: '0.200'
+  #         memory: 256M
+  # api_15:
+  #   image: marcelinol/go-events-api:latest
+  #   volumes:
+  #     - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+  #   ports:
+  #     - "8094:8080"
+  #   networks:
+  #     - event_bus
+  #   deploy:
+  #     restart_policy:
+  #       condition: on-failure
+  #       delay: 5s
+  #       max_attempts: 3
+  #       window: 120s
+  #     resources:
+  #       limits:
+  #         cpus: '0.200'
+  #         memory: 256M
+  #       reservations:
+  #         cpus: '0.200'
+  #         memory: 256M
+  # api_16:
+  #   image: marcelinol/go-events-api:latest
+  #   volumes:
+  #     - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+  #   ports:
+  #     - "8095:8080"
+  #   networks:
+  #     - event_bus
+  #   deploy:
+  #     restart_policy:
+  #       condition: on-failure
+  #       delay: 5s
+  #       max_attempts: 3
+  #       window: 120s
+  #     resources:
+  #       limits:
+  #         cpus: '0.200'
+  #         memory: 256M
+  #       reservations:
+  #         cpus: '0.200'
+  #         memory: 256M
+  # api_17:
+  #   image: marcelinol/go-events-api:latest
+  #   volumes:
+  #     - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+  #   ports:
+  #     - "8096:8080"
+  #   networks:
+  #     - event_bus
+  #   deploy:
+  #     restart_policy:
+  #       condition: on-failure
+  #       delay: 5s
+  #       max_attempts: 3
+  #       window: 120s
+  #     resources:
+  #       limits:
+  #         cpus: '0.200'
+  #         memory: 256M
+  #       reservations:
+  #         cpus: '0.200'
+  #         memory: 256M
+  # api_18:
+  #   image: marcelinol/go-events-api:latest
+  #   volumes:
+  #     - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+  #   ports:
+  #     - "8097:8080"
+  #   networks:
+  #     - event_bus
+  #   deploy:
+  #     restart_policy:
+  #       condition: on-failure
+  #       delay: 5s
+  #       max_attempts: 3
+  #       window: 120s
+  #     resources:
+  #       limits:
+  #         cpus: '0.200'
+  #         memory: 256M
+  #       reservations:
+  #         cpus: '0.200'
+  #         memory: 256M
+  # api_19:
+  #   image: marcelinol/go-events-api:latest
+  #   volumes:
+  #     - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+  #   ports:
+  #     - "8098:8080"
+  #   networks:
+  #     - event_bus
+  #   deploy:
+  #     restart_policy:
+  #       condition: on-failure
+  #       delay: 5s
+  #       max_attempts: 3
+  #       window: 120s
+  #     resources:
+  #       limits:
+  #         cpus: '0.200'
+  #         memory: 256M
+  #       reservations:
+  #         cpus: '0.200'
+  #         memory: 256M
+  # api_20:
+  #   image: marcelinol/go-events-api:latest
+  #   volumes:
+  #     - ./conversions:/go/src/github.com/marcelinol/go-events-api/conversions
+  #   ports:
+  #     - "8099:8080"
+  #   networks:
+  #     - event_bus
+  #   deploy:
+  #     restart_policy:
+  #       condition: on-failure
+  #       delay: 5s
+  #       max_attempts: 3
+  #       window: 120s
+  #     resources:
+  #       limits:
+  #         cpus: '0.200'
+  #         memory: 256M
+  #       reservations:
+  #         cpus: '0.200'
+  #         memory: 256M
+
+networks:
+  event_bus:
+    driver: overlay
