@@ -103,5 +103,5 @@ func doEvery(d time.Duration, f func()) {
 }
 
 func main() {
-	doEvery(4000*time.Millisecond, readFiles)
+	doEvery(5000*time.Millisecond, readFiles)
 }
